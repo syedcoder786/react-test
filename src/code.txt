@@ -1,0 +1,41 @@
+import { useState } from "react";
+
+function App() {
+  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(0);
+  const onSubmit = (e) => {
+    e.preventDefault()
+    var box = document.getElementById("box").style;
+    box.height = height + "px"
+    box.width = width + "px"
+    console.log(box.height)
+    console.log(box.width)
+  }
+  return (
+    <div className="App">
+      <center>
+        <form onSubmit={onSubmit}>
+          <input 
+            type="number" 
+            placeholder="height" 
+            min="0"
+            onChange = {(e) => { setHeight(e.target.value) }}  
+          />
+          <input 
+            type="number" 
+            placeholder="width" 
+            min="0"
+            onChange = {(e) => { setWidth(e.target.value) }}  
+          />
+          <button type="submit" style={{cursor:'pointer'}}>Draw</button>
+        </form>
+        <br/>
+        <div id="box" style={{height:100, width:100, backgroundColor:'red'}}>
+
+        </div>
+      </center>
+    </div>
+  );
+}
+
+export default App;
